@@ -1,0 +1,91 @@
+body {
+    background-color: black;
+}
+
+h1 {
+    justify-self: center;
+    color: white;
+    font-size: 35px;
+    font-family: "rubik", sans-serif;
+}
+
+#input {
+    height: 60px;
+    border: solid 2px black;
+    border-radius: 10px;
+    background-color: rgb(41, 42, 41);
+    color: rgb(7, 227, 2);
+    font-size: 30px;
+    font-family: "rubik", sans-serif;
+}
+
+.container {
+    justify-self: center;
+    border: solid 3px black;
+    display: flex; 
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 10px;
+    background-image: linear-gradient(135deg, black, white, grey);
+    box-shadow: 0px 0px 10px 5px white;
+}
+
+.cont2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 260px;
+}
+
+#numbers {
+    display: flex;
+    flex-wrap: wrap;
+    border: solid 2px black;
+    flex: 0 0 70%;
+
+}
+
+.number, 
+.op {
+    flex: 0 0 calc(25%);   /* 3 items per row */
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    height: 60px;
+    font-size: 20px;
+    
+}
+
+.funcs {
+    display: flex;
+    flex: 0 0 10%;
+    border: solid 2px black;
+}
+
+.func {
+    flex: 0 0 50%;
+    border: none;
+    outline: 2px solid black;
+    font-size: 20px;
+}
+
+.number,
+.op,
+.func {
+  cursor: pointer;
+  background-color: rgb(41, 42, 41);
+  transition: background-color 0.4s ease;
+  color: white;
+}
+
+.number:hover,
+.op:hover,
+.func:hover {
+  background-color: grey;  
+}
+
+
+
