@@ -70,15 +70,43 @@ numbers.forEach(button => {
     });
   });
 
-const op = document.querySelectorAll('.op:not(.equals)');
+document.addEventListener("keydown", (event) => {
+  const valid = ['0','1','2','3','4','5','6','7','8','9']
+  if (valid.includes(event.key)){
+    if (ifTheFirst) {  
+      num += event.key; 
+      input.textContent = num;
+    } else {
+      nextNum += event.key;
+      input.textContent = nextNum; 
+    };
+  }; 
+});  
+
+const op = document.querySelectorAll('.op:not(.equals, .dot)');
 
 op.forEach(button => {
     button.addEventListener("click", () => {
         operator = button.textContent;
         ifTheFirst = false;
-        
     });
-});        
+});    
+
+document.addEventListener("keydown", (event) => {
+  let key = event.key;
+
+  if (event.shiftKey && event.key === '=') {
+    key = '+';
+  } else if (event.shiftKey && event.key === '8') {
+    key = '*';
+  };
+
+  const valid = ['+','-','*','/'];
+  if (valid.includes(key)){
+    operator = key;
+    ifTheFirst = false;
+  };
+});
 
 const equals = document.querySelector('.equals');
 
@@ -87,6 +115,19 @@ equals.addEventListener("click", () => {
     num = input.textContent;
     nextNum = "";
     ifTheFirst = true;
+    console.log("EQUALS triggered", { num, operator, nextNum });
+
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "=" || event.key === "Enter") {
+    input.textContent = operate(num, operator, nextNum);
+    num = input.textContent;
+    nextNum = "";
+    ifTheFirst = true;
+  }
+  console.log("EQUALS triggered", { num, operator, nextNum });
+
 });
 
 const AC = document.querySelector('.ac');
@@ -100,9 +141,31 @@ AC.addEventListener('click', () => {
 const DEL = document.querySelector('.del');
 
 DEL.addEventListener('click', () => {
-    let outcome = input.textContent;
-    input.textContent = outcome.slice(0, -1);
-})
+  if (ifTheFirst) {
+    num = num.slice(0, -1);
+    input.textContent = num;
+  } else {
+    nextNum = nextNum.slice(0, -1);
+    input.textContent = nextNum;
+  };
+  
+});
 
 const dot = document.querySelector('.dot');
+
+
+  dot.addEventListener('click', () => {
+    if (ifTheFirst) {
+      if (!num.includes('.')) {
+        num += '.';
+        input.textContent = num;
+      }
+    } else {
+      if (!nextNum.includes('.')) {
+        nextNum += '.';
+        input.textContent = nextNum;
+      }
+    }
+  });
+
 
