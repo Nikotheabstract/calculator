@@ -1,9 +1,21 @@
 body {
     background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+
 h1 {
-    justify-self: center;
     color: white;
     font-size: 35px;
     font-family: "rubik", sans-serif;
@@ -20,7 +32,6 @@ h1 {
 }
 
 .container {
-    justify-self: center;
     border: solid 3px black;
     display: flex; 
     flex-direction: column;
